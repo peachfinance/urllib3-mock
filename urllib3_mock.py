@@ -48,7 +48,7 @@ def get_wrapped(func, wrapper_template, evaldict):
     if is_bound_method:
         sig.parameters = sig.parameters[1:]     # Omit 'self'
 
-    ctx = {'signature': signature, 'funcargs': callargs}
+    ctx = {'signature': sig, 'funcargs': sig}
     _exec(wrapper_template % ctx, evaldict)
 
     wrapper = evaldict['wrapper']
